@@ -255,7 +255,7 @@ void cuentapixeles(){
       contador1++;
     }
   }
-  if (contador1 <= 70000) {
+  if (contador1 <= 200) {
     ganador=true;
   } else{
   ganador=false;
