@@ -1,10 +1,6 @@
 class Figura {
-  float tx;
-  float ty;
-  float ang;
-  float dim;
+  float tx, ty, ang, dim, esc;
   color c1;
-  float esc;
 
  Figura(float posx, float posy, float ang_i, float dimen_i, color c1_i, float esc_i){
     tx = posx;
