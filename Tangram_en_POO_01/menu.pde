@@ -30,6 +30,7 @@ void menu () {
  if (mouseX>=(width/2)-110 && mouseX <= (width/2)+110 && mouseY>=(height/2)-80 && mouseY<= (height/2)-30 && mousePressed){
    sel_niveles=true;
    inicio=true;
+   creador=false;
    }
  
  if (mouseX>=(width/2)-110 && mouseX <= (width/2)+110 && mouseY>=height/2 && mouseY<= (height/2)+50 && mousePressed){
@@ -38,7 +39,8 @@ void menu () {
    }
  
   if (mouseX>=(width/2)-110 && mouseX <= (width/2)+110 && mouseY>=(height/2)+80 && mouseY<= (height/2)+130 && mousePressed){
-   creador=true;
+   sel_niveles=false;
+    creador=true;
    inicio=true;
    }
  

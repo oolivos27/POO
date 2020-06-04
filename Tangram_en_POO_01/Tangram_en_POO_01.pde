@@ -1,6 +1,7 @@
 PImage nivel1, nivel2, nivel3;
-boolean inicio =false, sel_niveles = false, creador = false, instrucciones =false, salir = false, primer_nivel = false, segundo_nivel= false, tercer_nivel= false, ganador=false;
+boolean inicio =false, sel_niveles = false, creador = false, instrucciones =false, salir = false, primer_nivel = false, segundo_nivel= false, tercer_nivel= false, ganador=false, guardar=false;
 int d= 150;
+int i=3;
 float contador1 =0;
 color blanco = color (255);
 
@@ -41,12 +42,16 @@ void draw () {
    background (54,54,54);
 
 //menu();
+
+if (sel_niveles==true) {
+    selec_niveles();
+    cuadro_nivel ();
+  }
+  
 if (inicio==false) {
     menu();
   }
-if (sel_niveles==true) {
-    selec_niveles();
-  }
+
 
 if (instrucciones==true) {
     instruccion();
@@ -64,6 +69,7 @@ if (primer_nivel==true||segundo_nivel==true||tercer_nivel==true) {
 if (salir==true) {
    exit();
   }
+  
 }
 
 void manipulacion () {
@@ -88,6 +94,11 @@ triang1.dibujar();
 /*void reset () {
 
 }*/
+
+  
+
+
+
 
 void fin() {
   if ((mouseX > width/2+195) && (mouseX <width/2+235) && (mouseY > height/2-250) && (mouseY < height/2-210) && (mousePressed)) {

@@ -1,3 +1,5 @@
+int n=3;
+
 void m_creador () {
  
  triang1_c.dibujar();
@@ -16,15 +18,42 @@ void m_creador () {
  cuad_c.seleccion();
  paral_c.seleccion();
     
-   
+guardar_nivel ();
   
 if (keyPressed){
- if (key == 's' || key == 'S'){
-  save ("niveles/nuevonivel.png");
-  }
+ 
 if (key==DELETE && creador==true && inicio==true) {
     creador=false;
     inicio=false;
+    guardar =true;
   }
  }
+}
+
+void guardar_nivel () {
+
+if (keyPressed) {
+if ((key == 's' || key == 'S') && creador == true){
+  guardar=true;
+  i=i+1;
+  
+  if (guardar==true){
+    save ("niveles/nuevonivel_"+ i + ".png");
+   }
+  }
+ }
+}
+
+void cuadro_nivel () {
+ 
+guardar_nivel ();
+if (guardar==true && sel_niveles ==true) {
+  n=n+1;
+  fill(50, 15, 200);
+  rect(n*width/10, height/3, 75, 75);
+  fill(0);
+  text(n, (n*width/10) + (2*textWidth (char(n))/3), (height/3)+((4*textAscent() - textDescent()) / 3));
+  delay (200);
+}
+guardar=false;
 }
