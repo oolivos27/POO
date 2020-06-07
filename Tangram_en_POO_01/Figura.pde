@@ -11,8 +11,7 @@ class Figura {
     esc= esc_i;
   }
   
-  void seleccion(){
-    
+ void seleccion(){
     color col_mouse;
     boolean  sel_fig = false;
     col_mouse= get(mouseX, mouseY);
@@ -28,14 +27,14 @@ class Figura {
       }
  }
  if (keyPressed) {
-      if(key == ' ' && sel_fig==true) {
+  if(key == ' ' && sel_fig==true) {
         ang += PI/4;
         delay (200);
       }
   if (key == 'r' || key == 'R' && sel_fig==true) {
       esc *= -1;
       delay (50);
-      }
-     }
     }
   }
+ }
+}

@@ -17,6 +17,5 @@ void dibujar (){
     fill(c1);  
     rect(x1, y1, x2, y2);
     pop();
-  
-  }
+   }
  }

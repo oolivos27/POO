@@ -3,7 +3,6 @@ class Paralelogramo extends Figura {
     super(posx, posy, ang_i, dim_i, c1_i, esc_i);
   }
   void dibujar() {
-    
     float x1 = -d/4;
     float y1 = -d/4;
     float x2 = 3*d/4;
@@ -19,7 +18,5 @@ class Paralelogramo extends Figura {
     fill(c1);
     quad(esc*x1,y1, esc*x2,y2,esc*x3,y3,esc*x4,y4);
     pop();
-    
-
- }
+  }
 }
