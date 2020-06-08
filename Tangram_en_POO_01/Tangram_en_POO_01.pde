@@ -1,8 +1,12 @@
+import ddf.minim.*;
 PImage nivel1, nivel2, nivel3, niveles[] = new PImage[70];
 boolean inicio , sel_niveles , creador , instrucciones , salir , primer_nivel , segundo_nivel, tercer_nivel, ganador, jugar;
 int d= 150, i=3, n=3, nivel;
 float contador1 =0;
 color blanco = color (255);
+//Sonidos
+Minim s_inicio, s_ganador, s_juego, s_mcreador, s_niveles, s_instrucciones;
+AudioPlayer cancion_menu, cancion_ganar, cancion_jugar, cancion_creador, cancion_niveles, cancion_instrucciones;
 
 //Figuras con color
 Cuadrado cuad;
@@ -32,18 +36,30 @@ void setup () {
  triang4_c = new Triangulo(376,126,PI/2,d/2,color(254,254,255),1); //Triangulo Azul
  triang5_c = new Triangulo(250,252,PI,d/2,color(254,255,254),1); //Triangulo Amarillo
 
+s_inicio= new Minim (this);
+s_ganador = new Minim (this);
+s_juego = new Minim (this);
+s_instrucciones = new Minim (this);
+s_mcreador = new Minim (this);
+s_niveles = new Minim (this);
+
+cancion_menu = s_inicio.loadFile ("Mii_plaza.mp3");
+cancion_ganar = s_ganador.loadFile ("Area_clear.mp3");
+cancion_instrucciones = s_instrucciones.loadFile ("Super_mario.mp3");
+cancion_jugar = s_juego.loadFile ("Overworld.mp3");
+cancion_creador = s_mcreador.loadFile ("Crash_Bandicoot.mp3");
+cancion_niveles = s_niveles.loadFile ("Pegasus_fantasy.mp3");
+
 }
 
 void draw () {
  background (54);
-
-//menu();
-
-if (sel_niveles==true) {
-    selec_niveles();
-}
 if (inicio==false) {
     menu();
+    sonidos_menu();
+}
+if (sel_niveles==true) {
+    selec_niveles();
 }
 if (instrucciones==true) {
     instruccion();
@@ -110,6 +126,7 @@ void menu () {
  }
 }
 void instruccion() {
+  cancion_instrucciones.play();
   fill(216);
   rect(width/3, (height/2-200), width/3, height/2+150);
   textSize (80);
@@ -137,6 +154,8 @@ void instruccion() {
    if (key==DELETE && instrucciones==true && inicio==true) {
     instrucciones=false;
     inicio=false;
+    cancion_instrucciones.pause();
+    cancion_instrucciones.rewind();
   }
  }
 }
@@ -174,7 +193,7 @@ void selec_niveles () {
   textSize (80);
   fill (235, 183, 52);
   text ("Escoja el Nivel", (width/2)-(textWidth ("Escoja el Nivel")/2), height/5);
-  
+  cancion_niveles.play();
   for (int n=0; n<i; n++) {
     if (y==8) {        
      y=y-8;        
@@ -190,6 +209,8 @@ void selec_niveles () {
       jugar = true;
       sel_niveles = false;
       nivel = n;
+      cancion_niveles.pause();
+      cancion_niveles.rewind();
     }
     y=y+1;
   }
@@ -197,12 +218,15 @@ void selec_niveles () {
    if (key==DELETE && sel_niveles==true && inicio==true) {
     sel_niveles=false;
     inicio=false;
+    cancion_niveles.pause();
+    cancion_niveles.rewind();
     }
    }  
-figuras_jugador();
+  figuras_jugador();
 }
 
 void jugar(int nivel_selec) {
+  cancion_jugar.play();
   if (nivel_selec == 0) {
     image(niveles[0], 2*width/5, height/10);
     manipulacion ();
@@ -225,18 +249,24 @@ background (random (0,255), random (0,255), random(0,255));
   textSize (100);
   text("!Ganaste!", random (0,700), random (100,600));
   delay (200);
+  cancion_ganar.play(); 
+ 
 }
   if (keyPressed){
    if (key==DELETE && sel_niveles==false && jugar==true) {
     sel_niveles=true;
     jugar=false;
     delay (100);
+    cancion_jugar.pause();
+    cancion_jugar.rewind();
+    cancion_ganar.pause();
+    cancion_ganar.rewind();
    }
  }
 }
 
 void m_creador () {
- 
+ cancion_creador.play();
  triang1_c.dibujar();
  triang2_c.dibujar();
  triang3_c.dibujar();
@@ -263,6 +293,8 @@ if (keyPressed) {
   if (key==DELETE && creador==true && inicio==true) {
     creador=false;
     inicio=false;
+    cancion_creador.pause();
+    cancion_creador.rewind();
    }
   }
  }
@@ -281,11 +313,22 @@ void cuentapixeles(){
       contador1++;
     }
   }
-  if (contador1 <= 100) {
+  if (contador1 <= 70000) {
     ganador=true;
+    cancion_jugar.pause();
+    cancion_jugar.rewind();
   }else{
   ganador=false;
   }
+}
+void sonidos_menu () {
+ 
+if (cancion_menu.isPlaying() && inicio == true) {
+  cancion_menu.pause();
+  cancion_menu.rewind();
+} else {
+  cancion_menu.play();
+ }
 }
 
 void fin() {
