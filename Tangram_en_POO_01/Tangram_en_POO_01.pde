@@ -313,7 +313,7 @@ void cuentapixeles(){
       contador1++;
     }
   }
-  if (contador1 <= 70000) {
+  if (contador1 <= 150) {
     ganador=true;
     cancion_jugar.pause();
     cancion_jugar.rewind();
