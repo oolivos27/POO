@@ -5,7 +5,7 @@ En este repositorio se incluyen los proyectos de la materia POO.
 
 `2. Tangram en POO`:Programa en programación orientada a objetos Processing.
         
-        `*Canciones usadas:`
+        *Canciones usadas:
         
             - Totaka, K. Mii Plaza. Nintendo Wii Music Collection.
             - Giygas Zalgo. Pegasus Fantasy - 8 bits.
